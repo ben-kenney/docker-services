@@ -1,0 +1,26 @@
+version: "3"
+
+# More info at https://hub.docker.com/r/plexinc/pms-docker and https://hub.docker.com/r/linuxserver/plex/
+# Might need to create config and transcode directories before first start.
+# Also should check existence of /media/working/TV and /media/working/Movies mapped directories 
+#
+# docker-compose up -d --build
+
+
+services:
+  pihole:
+    container_name: plex-dc
+    image: plexinc/pms-docker:latest
+    environment:
+      VERSION: 'latest'
+      PUID: 1001
+      PGID: 1001
+      TZ: 'America/Toronto'
+    network_mode: host
+    # Volumes store your data between container upgrades
+    volumes:
+       - ./config:/config
+       - ./transcode:/transcode
+       - /media/working/TV:/data/tvshows
+       - /media/working/Movies:/data/movies
+    restart: unless-stopped
