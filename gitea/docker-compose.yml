@@ -32,6 +32,7 @@ services:
       - "222:22"
     depends_on:
       - db
+    restart: unless-stopped
 
   db:
     container_name: gitea_postgres
@@ -45,4 +46,5 @@ services:
       - gitea
     volumes:
       - ./postgres:/var/lib/postgresql/data
+    restart: unless-stopped
 
