@@ -25,6 +25,7 @@ services:
     volumes:
       - ./gitea:/data
       - ./gitea/custom:/data/gitea/conf
+      - ./gitea/templates:/data/gitea/templates
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     ports:
