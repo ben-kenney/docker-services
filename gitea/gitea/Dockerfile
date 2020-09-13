@@ -37,7 +37,7 @@ RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf; \
     apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     apk upgrade --update && \
     apk add --virtual .build-deps $BUILD_DEPS && \
-    apk add --virtual .persistent-deps $PERSISTENT_DEPS && \
+    apk add --virtual .persistent-deps $PERSISTENT_DEPS
 #    mkdir -p /pandoc-build \
 #             /var/docs && \
 #    cd /pandoc-build && \
@@ -53,7 +53,7 @@ RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf; \
 #           $PANDOC_ROOT/lib \
 #           /root/.cabal \
 #           /root/.ghc && \
-    apk del --purge .build-deps
+#    && apk del --purge .build-deps
     
 RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf; \
 	pip3 install --upgrade pip;\
