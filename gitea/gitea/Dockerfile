@@ -12,9 +12,11 @@ ENV BUILD_DEPS \
     cabal \
     coreutils \
     ghc \
+    gmp \
     libffi \
     musl-dev \
     zlib-dev
+    
 ENV PERSISTENT_DEPS \
     gcc \
     g++ \
@@ -22,40 +24,26 @@ ENV PERSISTENT_DEPS \
     py3-pip \
     libffi-dev \
     asciidoctor \
-    gmp \
-    curl \
+    curl
+
+ENV TESTING_DEPS \
     pandoc
 
-ENV PANDOC_VERSION 2.10.1
-ENV PANDOC_DOWNLOAD_URL https://github.com/jgm/pandoc/archive/$PANDOC_VERSION.tar.gz
-ENV PANDOC_ROOT /usr/local/pandoc
-
-ENV PATH $PATH:$PANDOC_ROOT/bin
-
+ENV PYTHON_LIBS \
+    jupyter \
+    notebook
+#    matplotlib \
+#    docutils \
+#    nbconvert
+    
 # Install/Build Packages
 RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf; \
-    apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-    apk upgrade --update && \
-    apk add --virtual .build-deps $BUILD_DEPS && \
-    apk add --virtual .persistent-deps $PERSISTENT_DEPS
-#    mkdir -p /pandoc-build \
-#             /var/docs && \
-#    cd /pandoc-build && \
-#    curl -fsSL "$PANDOC_DOWNLOAD_URL" | tar -xzf - && \
-#    cd pandoc-$PANDOC_VERSION && \
-#    cabal update && \
-#    cabal install --only-dependencies && \
-#    cabal configure --prefix=$PANDOC_ROOT && \
-#    cabal build && \
-#    cabal copy && \
-#    cd / && \
-#    rm -Rf /pandoc-build \
-#           $PANDOC_ROOT/lib \
-#           /root/.cabal \
-#           /root/.ghc && \
-#    && apk del --purge .build-deps
+#    apk add --virtual .build-deps $BUILD_DEPS && \
+    apk add --virtual .persistent-deps $PERSISTENT_DEPS && \
+    apk add $TESTING_DEPS --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing/ && \
+    rm -rf /var/cache/apk/*
     
 RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf; \
 	pip3 install --upgrade pip;\
-	pip3 install jupyter notebook matplotlib docutils nbconvert
+	pip3 install $PYTHON_LIBS
 # add above any other python package you may need to install
