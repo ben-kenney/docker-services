@@ -1,6 +1,7 @@
 FROM gitea/gitea:latest
 
 # pandoc install from https://hub.docker.com/r/portown/alpine-pandoc/dockerfile
+# and from here: https://github.com/skyzyx/alpine-pandoc/blob/master/Dockerfile
 
 #RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf;\
 #	 apk --no-cache add --update gcc g++ python3-dev py3-pip libffi-dev asciidoctor pandoc && rm -rf /var/cache/apk/*
