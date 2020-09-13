@@ -10,6 +10,7 @@ The config file is implemented via a mapped volume.
 Instructions can be found in various places including the gitea help docs but I found that none of them really worked and the solution needed to be pieced together.
 
 The app.ini file is mapped to custom/conf/app.ini
+
 The header.tpbl file is mapped to custom/templates/custom/header.tmpl
 
 
