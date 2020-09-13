@@ -15,6 +15,16 @@ docker-compose up -d --build
 ```
 Then run through the configuration files. Select postgres, and remember that the database location is refereced by db:5432. Also should change the domain to the IP address (or better domain name) of the server.
 
+### Install
+
+DB: psql://db:5432
+DB username / password -> see docker-compose.yml
+Host name: Replace all instances of localhost with either the machine name or the IP
+Administration: Probably best practice is to create an admin user
+
+
+
+
 ## Second run
 ```
 sudo docker-compose up -d
