@@ -1,9 +1,9 @@
 # Introduction
 gitea https://gitea.io is a self-hosted git server.
 
-Out of the box, it doesn't support Jupyter notebook or asciidoctor rendering and so mods must be made to the docker commands.
+Out of the box, it doesn't support Jupyter notebook or asciidoctor rendering and so modifications must be made to the docker commands.
 
-We need to install python and jupyter notebook via a Dockerfile and then make a custom config file "app.ini".
+For jupyter support, we need to install python and jupyter notebook via a Dockerfile and then make a custom config file "app.ini".
 
 The config file is implemented via a mapped volume.
 
@@ -18,7 +18,7 @@ The header.tpbl file is mapped to custom/templates/custom/header.tmpl
 ```
 docker-compose up -d --build
 ```
-Then run through the configuration files. Select postgres, and remember that the database location is refereced by db:5432. Also should change the domain to the IP address (or better domain name) of the server.
+Then configure the server. Select postgres, and remember that the database location is refereced through docker by db:5432. Also if this is self-hosted might want to change the domain to the IP address (or better domain name) of the server.
 
 ### Install
 
@@ -43,4 +43,4 @@ It appears safe to update the dockerfile and the app.ini file after first use, *
 Still to be tested, but generally should be able to archive the entire gitea directory.
 
 ## Other thoughts
-In production environment should experiment with putting the git repos on an external drive to make backup easier.
+In production environment should experiment with putting the git repos on an external drive to make backup easier and also using nginx or traefik.
