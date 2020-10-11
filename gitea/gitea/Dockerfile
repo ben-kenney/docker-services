@@ -31,7 +31,8 @@ ENV TESTING_DEPS \
 
 ENV PYTHON_LIBS \
     jupyter \
-    notebook
+    notebook \
+    pptx2md
 #    matplotlib \
 #    docutils \
 #    nbconvert
