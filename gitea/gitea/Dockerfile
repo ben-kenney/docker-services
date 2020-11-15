@@ -31,10 +31,10 @@ ENV PERSISTENT_DEPS \
     py3-pyzmq
 
 ENV TESTING_DEPS \
-    pandoc \
-    py3-pillow \
-    libxml2-dev \
-    libxslt-dev
+    pandoc
+    # py3-pillow \
+    # libxml2-dev \
+    # libxslt-dev
 
 ENV PYTHON_LIBS \
     jupyter \
