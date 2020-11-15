@@ -24,7 +24,11 @@ ENV PERSISTENT_DEPS \
     py3-pip \
     libffi-dev \
     asciidoctor \
-    curl
+    curl \
+    libxslt-dev \
+    libxml2-dev \
+    py3-pillow \
+    py3-pyzmq
 
 ENV TESTING_DEPS \
     pandoc
