@@ -44,3 +44,12 @@ Still to be tested, but generally should be able to archive the entire gitea dir
 
 ## Other thoughts
 In production environment should experiment with putting the git repos on an external drive to make backup easier and also using nginx or traefik.
+
+## Connecting to container
+To connect to the gitea container, just use
+
+```
+docker exec -it gitea bash -c /bin/sh
+```
+
+note that gitea is that container name.
