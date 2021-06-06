@@ -12,3 +12,4 @@ services:
     environment:
       - AUTOMATED_CONVERSION_PRESET="General/Very Fast 1080p30"
       - AUTOMATED_CONVERSION_FORMAT="mp4"
+    restart: unless-stopped
