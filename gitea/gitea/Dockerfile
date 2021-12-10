@@ -31,7 +31,7 @@ ENV PERSISTENT_DEPS \
     py3-pyzmq
 
 ENV TESTING_DEPS \
-    pandoc \
+#    pandoc \
     py3-pillow \
     libxml2-dev \
     libxslt-dev
@@ -54,4 +54,9 @@ RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf; \
 RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf; \
 	pip3 install --upgrade pip;\
 	pip3 install $PYTHON_LIBS
+
+# as of Dec 10 2021 pandoc install is broken via apk so we do it manually 	
+RUN wget -c https://github.com/jgm/pandoc/releases/download/2.16.2/pandoc-2.16.2-linux-amd64.tar.gz -O - | tar -xz; \
+        ln -s "$(pwd)"/pandoc-2.16.2/bin/pandoc /usr/bin/pandoc;
+
 # add above any other python package you may need to install
